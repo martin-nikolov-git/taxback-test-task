@@ -1,0 +1,14 @@
+<books>
+    <book>
+            <author>Станислав Стратиев</author>
+            <name>Стоян</name>
+    </book>
+    <book>
+            <author>Джак Керуак</author>
+            <name>Събуди се</name>
+    </book>
+    <book>
+            <author>Никос Казандзакис</author>
+            <name>Аскетика</name>
+    </book>
+</books>

@@ -1,0 +1,14 @@
+<books>
+    <book>
+            <author>アレックス</author>
+            <name>サードドア book 2</name>
+    </book>
+    <book>
+            <author>アレックス</author>
+            <name>サードドア book 1</name>
+    </book>
+    <book>
+            <author>入山 章栄</author>
+            <name>The Names of the Dead</name>
+    </book>
+</books>

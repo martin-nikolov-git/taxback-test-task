@@ -1,0 +1,14 @@
+<books>
+    <book>
+            <author>入山 章栄</author>
+            <name>世界標準の経営理論</name>
+    </book>
+    <book>
+            <author>川合 眞一 </author>
+            <name>Book by 川合 眞一 </name>
+    </book>
+    <book>
+            <author>川合 眞一 </author>
+            <name>Another book by 川合 眞一 </name>
+    </book>
+</books>

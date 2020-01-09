@@ -1,0 +1,14 @@
+<books>
+    <book>
+            <author>Варлам Шаламов</author>
+            <name>Очерци за престъпния свят</name>
+    </book>
+    <book>
+            <author>Христо Калчев</author>
+            <name>Пет морални есета</name>
+    </book>
+    <book>
+            <author>Умберто Еко</author>
+            <name>Бързоноги другари</name>
+    </book>
+</books>
