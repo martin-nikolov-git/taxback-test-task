@@ -1,9 +1,7 @@
 <?php
-use App\DBConnection;
+use App\Database\DBCreator;
 
 require 'settings.php';
 
-$connection = new DBConnection();
-if(!$connection->check_table_exists("books")) {
-    #@TODO create table
-}
+$creator = new DBCreator();
+$creator->create_library_table();

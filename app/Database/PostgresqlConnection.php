@@ -1,11 +1,11 @@
 <?php
-namespace App;
+namespace App\Database;
 
 use App\General\EnvReader;
 
-class DBConnection
+class PostgresqlConnection implements IDBConnection
 {
-    public static $connection_parameters = [
+    private static $connection_parameters = [
         'host' => 'DB_HOST',
         'hostaddr' => 'DB_HOST_ADDR',
         'port' => 'DB_PORT',
@@ -20,9 +20,14 @@ class DBConnection
         'service' => 'DB_SERVICE'
     ];
 
-    private $connection = null;
+    protected $connection = null;
 
     public function __construct()
+    {
+        $this->connection = $this->createConnection();
+    }
+
+    public function createConnection()
     {
         $connection_string = '';
 
@@ -39,35 +44,22 @@ class DBConnection
         if($connection === false) {
             throw new \Exception("An error occurred when connecting to the DB");
         }
-        $this->connection = $connection;
+
+        $timezone = EnvReader::get('APP_DEFAULT_TIMEZONE');
+        pg_query($connection, "SET TIME ZONE '{$timezone}'");
+
+        return $connection;
     }
 
-    public function __destruct()
+    public function closeConnection()
     {
         if($this->connection !== null) {
-//            $this->connection
             pg_close($this->connection);
         }
     }
 
-    public function check_table_exists(string $table, string $schema='public'):bool
+    public function __destruct()
     {
-        $result = pg_query_params($this->connection, 'SELECT 1
-            FROM pg_tables
-            WHERE tablename = $1
-            AND schemaname = $2',
-            [$table, $schema]);
-
-        if($result === false) {
-            throw new \Exception("An error occurred when querying does \"$table\" exist on \"$schema\":\n" . pg_last_error($this->connection));
-        }
-
-        $value = pg_fetch_result($result,0,0);
-        if($value === '1') {
-            return true;
-        }
-        return false;
+        $this->closeConnection();
     }
-
-
 }

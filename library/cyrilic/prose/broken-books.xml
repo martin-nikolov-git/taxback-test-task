@@ -1,0 +1,13 @@
+<books>
+    <book>
+            <author></author>
+            <name>Стоян</name>
+    </book>
+    <not-a-book-book>
+            <author>Джак Керуак</author>
+            <name>Събуди се</name>
+    </not-a-book-book>
+    <book>
+            <author>Никос Казандзакис</author>
+    </book>
+</books>
