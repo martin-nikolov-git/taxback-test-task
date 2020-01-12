@@ -3,9 +3,19 @@
 
 namespace App\Database;
 
-
+/**
+ * Class which creates the table ran only once.
+ * Requires the database to be created beforehand
+ */
 class DBCreator extends PostgresqlConnection
 {
+    /**
+     * Method checks whether the table exists in the provided connection
+     *
+     * @params string $table The name of the table to check
+     * @params string $schema The schema where to check for the table
+     * @returns bool Whether the table exists or not
+     */
     public function check_table_exists(string $table, string $schema='public'):bool
     {
         $result = pg_query_params($this->connection, 'SELECT EXISTS (
@@ -27,12 +37,15 @@ class DBCreator extends PostgresqlConnection
         return false;
     }
 
+    /**
+     * Creates the books table we are going to use within the task
+     */
     public function create_library_table() {
         if($this->check_table_exists("books")) {
             echo "\e[1;33m Table \"books\" already exists.\e[0m";
-            echo "";
             return;
         }
+
         $statement = "CREATE TABLE books(
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(128) NOT NULL,

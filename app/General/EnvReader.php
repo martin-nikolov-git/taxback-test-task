@@ -1,10 +1,19 @@
 <?php
 namespace App\General;
 
+/**
+ * Class used to read from the .env file for a easier setup
+ */
 class EnvReader
 {
+    /**
+     * @var array The key=>value rows in the .env file
+     */
     private static $env = [];
 
+    /**
+     * Reads the .env file and stores it in the $env class property
+     */
     public static function init() {
         //Look for .env file either in env APP_ENV_PATH or in working directory
         $envpath = getenv('APP_ENV_PATH');
@@ -27,6 +36,10 @@ class EnvReader
         fclose($file_handle);
     }
 
+    /**
+     * Skips empty lines and lines starting with # as comments
+     * Sets everything before the first '=' as a key, and everything after as a value
+     */
     private static function handle_env_file_line(string $line) {
         $line = trim($line);
 
@@ -41,6 +54,9 @@ class EnvReader
         self::$env[$value_name] = $value;
     }
 
+    /**
+     * Gets the env variable, checking is it set in the enviroment variables or the .env file
+     */
     public static function get(string $variable_name) {
         $value = getenv($variable_name);
 
@@ -51,5 +67,3 @@ class EnvReader
         return self::$env[$variable_name] ?? null;
     }
 }
-
-EnvReader::init();

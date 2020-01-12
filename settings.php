@@ -2,6 +2,9 @@
 
 use App\General\EnvReader;
 
+/**
+ * A simple autoload function, which based on a class name requires the file
+ */
 spl_autoload_register(function(string $className) {
     $file_path = getcwd() . "\\{$className}.php";
     if(file_exists($file_path)) {
@@ -9,8 +12,10 @@ spl_autoload_register(function(string $className) {
     }
 });
 
-
+// Initiliaze our EnvReader
 EnvReader::init();
+
+//Set the php scrip timezone.
 $timezone = EnvReader::get('APP_DEFAULT_TIMEZONE');
 if($timezone !== null) {
     $response = date_default_timezone_set($timezone);

@@ -1,0 +1,41 @@
+/*main .form form > div{
+    vertical-align:bottom;
+}*/
+
+main .content .thumbnail:hover {
+    border-color: #337ab7;
+}
+
+main .content .thumbnail img {
+    display:block;
+    margin: 0 auto;
+}
+
+
+main .content .thumbnail h4 {
+    text-align: center;
+}
+main .content .thumbnail .author-name {
+    display:block;
+    text-align:right;
+    color: #696969;
+    font-style:italic;
+    margin:4px auto;
+}
+
+main .content .thumbnail .created-at,
+main .content .thumbnail .updated-at {
+    font-size:12px;
+}
+
+
+main .content .thumbnail .created-at span,
+main .content .thumbnail .updated-at span {
+    display:block;
+    font-weight:bold;
+}
+
+
+main .content .thumbnail .read-more {
+    text-align: right;
+}
